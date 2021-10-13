@@ -4,10 +4,10 @@ Thesaurus which access the [Datamuse API](https://datamuse.com/api).
 #### `pip install -r requirements.txt`
 
 ## Usage
-#### Run `python __init__.py` with a search query.
+#### Run `python __main__.py` with a search query.
 
 ## Example
-#### `python __init__.py search` will return synonyms for "search".
+#### `python __main__.py search` will return synonyms for "search".
 
 ![](https://i.imgur.com/kIgqZRC.png)
 

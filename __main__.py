@@ -16,7 +16,6 @@ tip = ''
 
 if len(sys.argv) > 2:
     tip = sys.argv[2]
-
     if tip.lower() == 'noun':
         tip = 'n'
     if tip.lower() == 'verb':
