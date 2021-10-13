@@ -58,12 +58,7 @@ if tip != '':
                 # reslist.append(result['word'])
 else:
     for result in api.words(ml=entry, max=51):
-    # for result in testresults:
         arch[result['word']] = {'score': result['score'], 'color': None}
-        # if result['score'] > 50000:
-        #     reslist.append(result['word'])
-
-# for each key in arch, if the key's length ...
 
 starch = dict()
 
@@ -72,11 +67,6 @@ for key, value in arch.items():
         starch[key[:16] + '...'] = arch[key]
     else:
         starch[key] = arch[key]
-        # key = key[:17] + '...'
-
-# if len(word[0]) > 2:
-#     word[0] = word[0][:18] + "..."
-#     print(word[0])
 
 results = grouplen(starch.items(), 3)
 
@@ -93,16 +83,6 @@ for key, value in starch.items():
     else:
         value['color'] = u"\u001b[38;5;" + "130" + "m"
 
-# print(arch)
-
-# print(results)
-# print('\n')
-
-# bees = map(list, zip(*results))
-# results = [i for i in bees]
-
-# import itertools
-
 ################################################################################
 # print(os.get_terminal_size()) # >> returns a tuple.
 # you can mofify the ljust parameter to display things nicely
@@ -113,28 +93,8 @@ cols = os.get_terminal_size().columns
 ################################################################################
 
 
-# for trip in list(map(list, itertools.zip_longest(*results, fillvalue=None))):
 for trip in results:
-    # print(tup[1])
-    # for key, value in tup.items():
-        # print(key)
-    # print(trip)
-    # for word in trip:
-        # color = word[1]['color']
-        # print(color)
     for word in trip:
-
-        # print(word)
         sys.stdout.write(word[1]['color'] + word[0].ljust(int(cols/3)) + u"\u001b[0m")
-    # print('\n')
-    # sys.stdout.write(fu"\u001b[38;5;" + "214" + "m " + {word[0].ljust(20) for word in trip}')
-    # print(f'{"".join(u'\u001b[38;5; + '214' + "m " + word[0].ljust(20) for word in trip)}{bcolors.ENDC}')
-    # print(f'{"".join({orange} + word[0].ljust(20) for word in trip)}')
-    # print(f'{"".join(word[1]["color"] + word[0].ljust(20) for word in trip)}{bcolors.ENDC}')
-    # pass
-print(u"\u001b[0m")
-# print(reslist)
-# scores = [word['score'] for word in biglist]
-# print(sum(scores)/len(scores))
 
-# api.words(ml="adapt")
+print(u"\u001b[0m")

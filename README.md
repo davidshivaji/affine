@@ -10,3 +10,6 @@ Thesaurus which access the [Datamuse API](https://datamuse.com/api).
 #### `python __init__.py search` will return synonyms for "search".
 
 ![](https://i.imgur.com/kIgqZRC.png)
+
+## Options
+#### adding a second argument `a/v/n` will filter only for adjectives, verbs, nouns.
