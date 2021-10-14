@@ -1,4 +1,4 @@
-Thesaurus which access the [Datamuse API](https://datamuse.com/api).
+Thesaurus which access the [Datamuse API](https://www.datamuse.com/api).
 
 ## Installation
 ```bash
