@@ -1,16 +1,14 @@
 Thesaurus which access the [Datamuse API](https://www.datamuse.com/api).
 
-## Installation
+## Install
 ```bash
-git clone https://github.com/davidshivaji/affine.git
-cd affine
-pip install -r requirements.txt
+pip install pyaffine
 ```
 
 ## Example
-```python
-python __init__.py search
+```bash
+affine search
 ```
 will return synonyms for "search".
 
-![](https://i.imgur.com/kIgqZRC.png)
+![](https://i.imgur.com/BRHoGQm.png)
