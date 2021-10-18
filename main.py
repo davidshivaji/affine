@@ -6,14 +6,10 @@ import os
 import click
 
 def grouplen(sequence, chunk_size):
-    # i want to pivot this, so that it goes down first instead of across.
     return list(zip(*[iter(sequence)] * chunk_size))
 
 
 def some_function(entry):
-    # take an entry and go.
-    # print(entry)
-    # arch is a set.
     arch = dict()
     for result in api.words(ml=entry, max=51):
         # print(result)
@@ -62,10 +58,13 @@ def some_function(entry):
 
 def start():
     # All the logic of argparse goes in this function
+    # it's just basically telling it to expect these.
     parser = argparse.ArgumentParser(description='Enter word.')
     parser.add_argument('entry', type=str, help='the name of the entry')
     # parser.add_argument('--end', dest='end', default="!",
     #                 help='sum the integers (default: find the max)')
 
+    # parser.parse_args() will pass arguments along to
+    # any function that calls it.
     args = parser.parse_args()
     some_function(args.entry)

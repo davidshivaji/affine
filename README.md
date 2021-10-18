@@ -4,7 +4,7 @@ Thesaurus which access the [Datamuse API](https://www.datamuse.com/api).
 ```bash
 pip install pyaffine
 ```
-will install it and its dependencies on your system.
+will install the script and its dependencies, so you can run directly from command-line.
 
 ## Example
 ```bash
