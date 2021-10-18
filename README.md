@@ -7,8 +7,8 @@ pip install pyaffine
 
 ## Example
 ```bash
-affine search
+affine motivate
 ```
-will return synonyms for "search".
+will return synonyms for "motivate".
 
 ![](https://i.imgur.com/BRHoGQm.png)
