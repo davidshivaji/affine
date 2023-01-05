@@ -3,7 +3,6 @@ import sys
 import datamuse
 api = datamuse.Datamuse()
 import os
-import click
 
 def grouplen(sequence, chunk_size):
     return list(zip(*[iter(sequence)] * chunk_size))
@@ -12,11 +11,7 @@ def grouplen(sequence, chunk_size):
 def some_function(entry):
     arch = dict()
     for result in api.words(ml=entry, max=51):
-        # print(result)
         arch[result['word']] = {'score': result['score'], 'color': None}
-        # print(len(arch))
-
-    # print(arch)
 
     starch = dict()
 
@@ -24,16 +19,7 @@ def some_function(entry):
         if len(key) > 20:
             starch[key[:16] + '...'] = arch[key]
         else:
-            # print('shorter')
-            # print(key)
             starch[key] = arch[key]
-
-    # print('starch length', len(starch))
-    # print(len(starch.items()))
-    # print(starch)
-
-    results = grouplen(starch.items(), 3)
-    # print(results)
 
     for key, value in starch.items():
         if value['score'] > 60000:
@@ -45,26 +31,29 @@ def some_function(entry):
         else:
             value['color'] = u"\u001b[38;5;" + "130" + "m"
 
-    cols = os.get_terminal_size().columns
+    max_word_length = max(len(word) for word in starch)
 
+    col_width = max_word_length + 1
 
-    for trip in results:
-        for word in trip:
-            sys.stdout.write(word[1]['color'] + word[0].ljust(int(cols/3)) + u"\u001b[0m")
+    num_rows = (len(starch) + 2) // 3
 
+    terminal_width = os.get_terminal_size().columns
+    col_width = terminal_width // 3
+
+    for row in range(num_rows):
+        for col in range(3):
+            index = row + col * num_rows
+            if index < len(starch):
+                word, data = list(starch.items())[index]
+                sys.stdout.write(data['color'] + word.ljust(col_width))
+        print('')
     print(u"\u001b[0m")
-    # print(msg)
+
 
 
 def start():
-    # All the logic of argparse goes in this function
-    # it's just basically telling it to expect these.
     parser = argparse.ArgumentParser(description='Enter word.')
     parser.add_argument('entry', type=str, help='the name of the entry')
-    # parser.add_argument('--end', dest='end', default="!",
-    #                 help='sum the integers (default: find the max)')
 
-    # parser.parse_args() will pass arguments along to
-    # any function that calls it.
     args = parser.parse_args()
     some_function(args.entry)
